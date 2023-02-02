@@ -13,7 +13,7 @@ const Main = () => {
 	};
 
 	return (
-		<div className="p-4 min-w-[30rem] ">
+		<div className="p-4 lg:min-w-[30rem] sm:min-w-[24rem] ">
 			<label htmlFor="search" className="flex items-center relative">
 				<SearchOutlinedIcon className="absolute left-4 text-DarkGray" />
 				<input

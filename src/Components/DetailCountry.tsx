@@ -1,8 +1,10 @@
 import useSearchStore from "../useSearchStore";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 const DetailCountry = () => {
 	const data = useSearchStore((state) => state.data);
 	const isDetail = useSearchStore((state) => state.isDetail);
+	const setIsDetail = useSearchStore((state) => state.setIsDetail);
 
 	const displayDetail = data.filter((country) => country.name === isDetail.country);
 
@@ -20,9 +22,11 @@ const DetailCountry = () => {
 		borders,
 	} = displayDetail[0];
 
-	const filteredCurrencies = currencies
-		.map((currency: { code: string; name: string; symbol: string }) => currency.name)
-		.join(", ");
+	const filteredCurrencies =
+		currencies &&
+		currencies
+			.map((currency: { code?: string; name?: string; symbol?: string }) => currency.name)
+			.join(", ");
 
 	const filteredLanguages = languages
 		.map(
@@ -31,14 +35,24 @@ const DetailCountry = () => {
 		)
 		.join(", ");
 
-	const filteredBorders = borders.join(", ");
-
-	console.log(filteredBorders);
+	const filteredBorders = borders?.map((bd: string) => {
+		return data
+			.filter((country) => {
+				return country.alpha3Code === bd;
+			})
+			.map((country) => country.name)
+			.join(", ");
+	});
 
 	return (
 		<div className="px-8 flex flex-col items-start max-w-lg md:max-w-7xl mr-auto md:mx-auto ">
 			<div className="px-8">
-				<button className="px-12 py-4 bg-VeryLightGray shadow-lg max-w-sm mx-auto md:max-w-8xl ">
+				<button
+					className="px-6 py-4 bg-VeryLightGray shadow-lg max-w-sm mx-auto md:max-w-8xl flex gap-4 items-center"
+					onClick={() => setIsDetail("")}>
+					<span>
+						<KeyboardBackspaceIcon />
+					</span>
 					Back
 				</button>
 			</div>
@@ -61,24 +75,36 @@ const DetailCountry = () => {
 								<span className="font-extrabold">Sub Region:</span> {subregion}
 							</p>
 							<p>
-								<span className="font-extrabold">Capital:</span> {capital}
+								<span className="font-extrabold">Capital:</span> {capital ? capital : "None"}
 							</p>
 						</div>
 						<div className="flex flex-col gap-2">
 							<p>
-								<span className="font-extrabold">Top Level Domain:</span> {topLevelDomain}
+								<span className="font-extrabold">Top Level Domain:</span>{" "}
+								{topLevelDomain && topLevelDomain}
 							</p>
 							<p>
-								<span className="font-extrabold">Currencies:</span> {filteredCurrencies}
+								<span className="font-extrabold">Currencies:</span>{" "}
+								{filteredCurrencies ? filteredCurrencies : "None"}
 							</p>
 							<p>
-								<span className="font-extrabold">Languages:</span> {filteredLanguages}
+								<span className="font-extrabold">Languages:</span>{" "}
+								{filteredLanguages && filteredLanguages}
 							</p>
 						</div>
 					</div>
-					<p className="py-8">
-						<span className="font-extrabold">Border Countries:</span> {filteredBorders}
-					</p>
+					<div className="py-8 ">
+						<span className="font-extrabold">Border Countries: </span>
+						<div className="inline-flex gap-2 items-center justify-start flex-wrap ">
+							{filteredBorders
+								? filteredBorders.map((country: string) => (
+										<div className="border-DarkGray border-[1px] shadow-md rounded-md  p-2">
+											{country}
+										</div>
+								  ))
+								: "None"}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

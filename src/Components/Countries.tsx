@@ -35,7 +35,7 @@ const Countries = () => {
 	}, [inputSearch, region]);
 
 	return (
-		<div className="flex w-full gap-16 justify-center flex-wrap mx-auto p-4 items-stretch">
+		<div className="flex w-full gap-16 justify-center flex-wrap mx-auto max-w-7xl p-4 items-stretch">
 			{data && isSearch
 				? dataFiltered?.map((country) => (
 						<div key={country.name}>

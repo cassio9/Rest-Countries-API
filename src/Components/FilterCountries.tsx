@@ -22,7 +22,7 @@ const FilterCountries = () => {
 					value={region}
 					onChange={handleChange}
 					placeholder="Filter by Region"
-					className={` w-1/2 sm:w-full bg-white shadow-lg  py-4 px-4 pr-12 rounded-lg`}>
+					className={` w-1/2 sm:w-full min-w-[200px] bg-white shadow-lg  py-4 px-4 pr-12 rounded-lg`}>
 					<option className="text-VeryLightGray" hidden>
 						Filter by Region
 					</option>
