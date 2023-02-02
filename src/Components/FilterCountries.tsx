@@ -1,27 +1,39 @@
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import { useRef } from "react";
 import useSearchStore from "../useSearchStore";
+
 const FilterCountries = () => {
 	const region = useSearchStore((state) => state.region);
 	const setRegion = useSearchStore((state) => state.setRegion);
+	const setIsSearch = useSearchStore((state) => state.setIsSearch);
+	const ref = useRef(null);
+
+	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setRegion(e.target.value);
+		setIsSearch();
+	};
 
 	return (
-		<form className="p-4">
+		<div className="p-4">
 			<label htmlFor="region" className="relative">
 				<select
 					name="region"
-					id="regionFilter"
+					id="region"
 					value={region}
-					onChange={(e) => setRegion(e.target.value)}
-					className="w-1/2 bg-white shadow-lg  p-4 appearance-none relative">
-					<option value="africa">Africa</option>
-					<option value="america">America</option>
-					<option value="asia">Asia</option>
-					<option value="europe">Europe</option>
-					<option value="oceania">Oceania</option>
+					onChange={handleChange}
+					placeholder="Filter by Region"
+					className={` w-1/2 sm:w-full bg-white shadow-lg  py-4 px-4 pr-12 rounded-lg`}>
+					<option className="text-VeryLightGray" hidden>
+						Filter by Region
+					</option>
+					<option value="Africa">Africa</option>
+					<option value="Americas">Americas</option>
+					<option value="Asia">Asia</option>
+					<option value="Europe">Europe</option>
+					<option value="Oceania">Oceania</option>
 				</select>
-				<ExpandMoreOutlinedIcon className="absolute right-4 top-0" />
 			</label>
-		</form>
+		</div>
 	);
 };
 
