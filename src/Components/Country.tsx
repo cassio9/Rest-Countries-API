@@ -17,7 +17,7 @@ const Country = ({ name, flag, capital, region, pop }: Props) => {
 	};
 
 	return (
-		<div
+		<section
 			className="bg-white dark:bg-DarkBlue dark:text-white rounded-xl shadow-md w-60 flex flex-col h-full cursor-pointer"
 			onClick={handleDetail}>
 			<img
@@ -37,7 +37,7 @@ const Country = ({ name, flag, capital, region, pop }: Props) => {
 					<span className="font-extrabold">Capital:</span> {capital}
 				</p>
 			</div>
-		</div>
+		</section>
 	);
 };
 

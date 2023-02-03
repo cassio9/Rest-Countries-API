@@ -12,9 +12,10 @@ const FilterCountries = () => {
 	};
 
 	return (
-		<div className="p-4">
+		<section className="p-4">
 			<label htmlFor="region" className="relative">
 				<select
+					aria-label="filterByRegion"
 					name="region"
 					id="region"
 					value={region}
@@ -29,7 +30,7 @@ const FilterCountries = () => {
 					<option value="Oceania">Oceania</option>
 				</select>
 			</label>
-		</div>
+		</section>
 	);
 };
 

@@ -13,7 +13,7 @@ const Main = () => {
 	};
 
 	return (
-		<div className="p-4 lg:min-w-[30rem] sm:min-w-[24rem] ">
+		<section className="p-4 lg:min-w-[30rem] sm:min-w-[24rem] ">
 			<label htmlFor="search" className="flex items-center relative">
 				<SearchOutlinedIcon className="absolute left-4 text-DarkGray dark:text-white" />
 				<input
@@ -25,7 +25,7 @@ const Main = () => {
 					className="shadow-xl w-full p-4  rounded-lg text-DarkGray px-12 dark:bg-DarkBlue dark:text-white focus:outline-none placeholder:dark:text-white"
 				/>
 			</label>
-		</div>
+		</section>
 	);
 };
 
