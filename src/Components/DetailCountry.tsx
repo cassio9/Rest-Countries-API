@@ -45,7 +45,7 @@ const DetailCountry = () => {
 	}
 
 	return (
-		<main className="px-2 flex flex-col items-start max-w-lg md:max-w-7xl mr-auto md:mx-auto dark:text-white">
+		<section className="px-2 flex flex-col items-start max-w-lg md:max-w-7xl mr-auto md:mx-auto dark:text-white">
 			<div className="px-8 xl:pl-[5.5rem]  mr-auto">
 				<button
 					className="px-6 py-4 bg-VeryLightGray shadow-lg  mx-auto md:max-w-8xl flex gap-4 items-center dark:bg-DarkBlue rounded-lg"
@@ -114,7 +114,7 @@ const DetailCountry = () => {
 					</div>
 				</div>
 			</div>
-		</main>
+		</section>
 	);
 };
 
