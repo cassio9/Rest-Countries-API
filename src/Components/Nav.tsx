@@ -10,7 +10,7 @@ const Nav = () => {
 	useEffect(() => {
 		if (DarkTheme) {
 			document.documentElement.classList.add("dark");
-			localStorage.setItem("theme", "IloveYou");
+			localStorage.setItem("theme", "ILoveYou");
 		} else {
 			document.documentElement.classList.remove("dark");
 			localStorage.removeItem("theme");

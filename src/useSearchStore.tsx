@@ -30,7 +30,7 @@ const useSearchStore = create<SearchStore>()((set) => ({
 	setIsDetail: (value) =>
 		set((state) => ({ isDetail: { open: !state.isDetail.open, country: value } })),
 	fetch: async () => {
-		const response = await axios.get("../data.json");
+		const response = await axios.get("https://restcountries.com/v3.1/all");
 		set((state) => ({ data: (state.data = response.data) }));
 	},
 }));
