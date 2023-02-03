@@ -39,7 +39,7 @@ const Countries = () => {
 	}, [inputSearch, region]);
 
 	return (
-		<section className="flex dark:bg-VeryDarkBlueBG w-full gap-16 justify-center flex-wrap mx-auto max-w-7xl p-4 items-stretch">
+		<div className="flex dark:bg-VeryDarkBlueBG w-full gap-16 justify-center flex-wrap mx-auto max-w-7xl p-4 items-stretch">
 			{data && isSearch
 				? dataFiltered?.map((country) => (
 						<div key={country.name.common}>
@@ -63,7 +63,7 @@ const Countries = () => {
 							/>
 						</div>
 				  ))}
-		</section>
+		</div>
 	);
 };
 

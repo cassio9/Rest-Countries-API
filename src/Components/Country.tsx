@@ -26,7 +26,7 @@ const Country = ({ name, flag, capital, region, pop }: Props) => {
 				className="rounded-t-lg w-full flex-1 object-cover object-center max-h-[10rem]"
 			/>
 			<div className="p-4 mb-4 ">
-				<h1 className="mb-4 font-extrabold">{name}</h1>
+				<h2 className="mb-4 font-extrabold">{name}</h2>
 				<p>
 					<span className="font-extrabold">Population:</span> {pop.toLocaleString()}
 				</p>

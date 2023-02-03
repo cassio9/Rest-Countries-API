@@ -63,7 +63,7 @@ const DetailCountry = () => {
 					alt=""
 				/>
 				<div className="flex flex-col flex-2 max-w-lg mx-auto">
-					<h1 className="text-3xl font-extrabold py-4">{name.common}</h1>
+					<h2 className="text-3xl font-extrabold py-4">{name.common}</h2>
 					<div className="flex flex-col gap-8 md:flex-row md:items-baseline max-w-lg justify-between">
 						<div className="flex flex-col gap-2 min-w-[200px]">
 							<p className="">
