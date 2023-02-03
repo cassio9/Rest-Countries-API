@@ -28,27 +28,31 @@ const DetailCountry = () => {
 			.map((currency: { code?: string; name?: string; symbol?: string }) => currency.name)
 			.join(", ");
 
-	const filteredLanguages = languages
-		.map(
-			(language: { iso639_1: string; iso639_2: string; name: string; nativeName: string }) =>
-				language.name
-		)
-		.join(", ");
-
-	const filteredBorders = borders?.map((bd: string) => {
-		return data
-			.filter((country) => {
-				return country.alpha3Code === bd;
-			})
-			.map((country) => country.name)
+	const filteredLanguages =
+		languages &&
+		languages
+			.map(
+				(language: { iso639_1: string; iso639_2: string; name: string; nativeName: string }) =>
+					language.name
+			)
 			.join(", ");
-	});
+
+	const filteredBorders =
+		borders &&
+		borders.map((bd: string) => {
+			return data
+				.filter((country) => {
+					return country.alpha3Code === bd;
+				})
+				.map((country) => country.name)
+				.join(", ");
+		});
 
 	return (
-		<div className="px-8 flex flex-col items-start max-w-lg md:max-w-7xl mr-auto md:mx-auto ">
+		<div className="px-8 flex flex-col items-start max-w-lg md:max-w-7xl mr-auto md:mx-auto dark:text-white">
 			<div className="px-8">
 				<button
-					className="px-6 py-4 bg-VeryLightGray shadow-lg max-w-sm mx-auto md:max-w-8xl flex gap-4 items-center"
+					className="px-6 py-4 bg-VeryLightGray shadow-lg max-w-sm mx-auto md:max-w-8xl flex gap-4 items-center dark:bg-DarkBlue rounded-lg"
 					onClick={() => setIsDetail("")}>
 					<span>
 						<KeyboardBackspaceIcon />
@@ -56,12 +60,16 @@ const DetailCountry = () => {
 					Back
 				</button>
 			</div>
-			<div className="flex flex-col md:flex-row gap-8  p-8 items-center md:items-center max-w-md md:max-w-6xl">
-				<img src={flag} className="md:flex-1 min-w-[250px] w-full md:max-w-xl md:h-fit" alt="" />
+			<div className="flex flex-col md:flex-row gap-8  p-8 items-center md:items-center max-w-md md:max-w-6xl mx-auto">
+				<img
+					src={flag}
+					className="md:flex-1 min-w-[250px] lg:min-w-[400px] lg:h-full w-full md:max-w-xl md:h-fit max-h-[200px] md:max-h-[420px]"
+					alt=""
+				/>
 				<div className="flex flex-col flex-2 max-w-lg mx-auto">
 					<h1 className="text-3xl font-extrabold py-4">{name}</h1>
 					<div className="flex flex-col gap-8 md:flex-row md:items-baseline max-w-lg justify-between">
-						<div className="flex flex-col gap-2">
+						<div className="flex flex-col gap-2 min-w-[200px]">
 							<p className="">
 								<span className="font-extrabold">Native Name:</span> {nativeName}
 							</p>
@@ -80,8 +88,7 @@ const DetailCountry = () => {
 						</div>
 						<div className="flex flex-col gap-2">
 							<p>
-								<span className="font-extrabold">Top Level Domain:</span>{" "}
-								{topLevelDomain && topLevelDomain}
+								<span className="font-extrabold">Top Level Domain:</span> {topLevelDomain}
 							</p>
 							<p>
 								<span className="font-extrabold">Currencies:</span>{" "}
@@ -89,16 +96,16 @@ const DetailCountry = () => {
 							</p>
 							<p>
 								<span className="font-extrabold">Languages:</span>{" "}
-								{filteredLanguages && filteredLanguages}
+								{filteredLanguages ? filteredLanguages : "None"}
 							</p>
 						</div>
 					</div>
 					<div className="py-8 ">
-						<span className="font-extrabold">Border Countries: </span>
 						<div className="inline-flex gap-2 items-center justify-start flex-wrap ">
+							<span className="font-extrabold">Border Countries: </span>
 							{filteredBorders
 								? filteredBorders.map((country: string) => (
-										<div className="border-DarkGray border-[1px] shadow-md rounded-md  p-2">
+										<div className=" shadow-lg rounded-md p-2 dark:bg-DarkBlue text-sm ">
 											{country}
 										</div>
 								  ))

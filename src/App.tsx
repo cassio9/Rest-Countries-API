@@ -10,7 +10,7 @@ function App() {
 	const isDetail = useSearchStore((state) => state.isDetail);
 
 	return (
-		<div className="font-Nunito bg-VeryLightGray text-VeryDarkBlue min-h-screen max-h-fit mx-auto">
+		<div className="font-Nunito bg-VeryLightGray dark:bg-VeryDarkBlueBG dark:text-white text-VeryDarkBlue min-h-screen max-h-fit mx-auto">
 			<Nav />
 			{!isDetail.open ? (
 				<div>

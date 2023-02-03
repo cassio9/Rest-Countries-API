@@ -10,6 +10,7 @@ const Countries = () => {
 
 	const [dataFiltered, setDataFiltered] = useState<any[] | null>(null);
 
+	//change countries according to inputs, or set initial render (12 countries)
 	useEffect(() => {
 		const filterData = () => {
 			if (region == "") {
@@ -35,7 +36,7 @@ const Countries = () => {
 	}, [inputSearch, region]);
 
 	return (
-		<div className="flex w-full gap-16 justify-center flex-wrap mx-auto max-w-7xl p-4 items-stretch">
+		<div className="flex dark:bg-VeryDarkBlueBG w-full gap-16 justify-center flex-wrap mx-auto max-w-7xl p-4 items-stretch">
 			{data && isSearch
 				? dataFiltered?.map((country) => (
 						<div key={country.name}>
@@ -48,7 +49,7 @@ const Countries = () => {
 							/>
 						</div>
 				  ))
-				: data.slice(0, 8).map((country) => (
+				: data.slice(0, 12).map((country) => (
 						<div key={country.name}>
 							<Country
 								name={country.name}
